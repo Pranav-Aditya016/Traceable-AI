@@ -1,0 +1,5 @@
+{
+  "name": "Remix: Copy of Copy of Medical Multimodal Pipeline Demo",
+  "description": "A research prototype demonstrating a medical multimodal pipeline. It uses free-tier Gemini models (Gemini 3 Flash and Gemini 2.5 Flash Image) to perform OCR on medical documents, extract conditions, select organs, and generate synthetic images with XAI artifacts. All generated images are for research purposes only and are clearly labeled as synthetic.",
+  "requestFramePermissions": []
+}

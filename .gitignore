@@ -1,0 +1,81 @@
+# ── Python ────────────────────────────────────────────────────────────────
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+build/
+*.egg
+
+# ── Node.js ───────────────────────────────────────────────────────────────
+node_modules/
+dist/
+.npm
+
+# ── Large model weights & checkpoints ─────────────────────────────────────
+TraceMD/models/
+medvisx/models/
+my_trained_models/
+MedVisX_Trained_LoRA_Weights/
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+*.gguf
+*.pt
+
+# ── Large datasets & extracted data ───────────────────────────────────────
+MP01/extracted_data/
+MP01/CT SCANS.zip
+MP01/KIDNEY.zip
+
+# ── IEEE paper materials (unpublished / confidential) ─────────────────────
+IEEE_Conference_Template*.pdf
+IEEE_Fig*.png
+IEEE_Paper_Figures_Complete*/
+IEEE_Paper_Figures_Complete*.zip
+IEEE_Table1_Quantitative_Metrics.csv
+MedVisX_IEEE_Paper_Package/
+MedVisX_IEEE_Paper_Package.zip
+MedVisX_IEEE_Paper.tex
+medvisx/website/
+
+# ── Patient / clinical sample data ────────────────────────────────────────
+MedVisX_Paper_Samples/
+MedVisX_Paper_Samples.zip
+MedVisX_Paper_Samples\ (1).zip
+MP01/extracted_data/
+
+# ── Personal / internal documents & presentations ─────────────────────────
+Documents/
+*.pptx
+Pranav*.pptx
+Review*.pptx
+
+# ── Archive ZIPs of sensitive content ─────────────────────────────────────
+MedVisX_Trained_LoRA_Weights*.zip
+my_trained_models.zip
+TraceMD_Package.zip
+MedVisX_Package.zip
+TRACEMD-main.zip
+
+# ── Logs ──────────────────────────────────────────────────────────────────
+TraceMD/logs/
+medvisx/logs/
+logs/
+*.log
+
+# ── Environment variables & secrets ───────────────────────────────────────
+.env
+.env.local
+.env.*.local
+secrets.py
+
+# ── IDE ───────────────────────────────────────────────────────────────────
+.vscode/
+
+# ── OS ────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.tmp

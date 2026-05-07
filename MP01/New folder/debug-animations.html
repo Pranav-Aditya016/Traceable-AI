@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediAI - Animation Debug</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 40px;
+            background: #f5f7fa;
+        }
+
+        .test-section {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #1a202c;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .animation-demo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: inline-block;
+            will-change: transform;
+        }
+
+        .demo-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .demo-bounce {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .demo-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .demo-slideInUp {
+            animation: slideInUp 1s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        .demo-slideInDown {
+            animation: slideInDown 1s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        .demo-glow {
+            animation: glow 2s ease-in-out infinite;
+            width: 50px;
+            height: 50px;
+            background: #2563eb;
+            border-radius: 50%;
+            margin: 20px;
+        }
+
+        /* Exact keyframes from main CSS */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
+            }
+            33% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            66% {
+                transform: translateY(-10px) translateX(-10px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-20px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(37, 99, 235, 0.5),
+                            0 0 40px rgba(37, 99, 235, 0.25);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(37, 99, 235, 0.8),
+                            0 0 60px rgba(37, 99, 235, 0.4);
+            }
+        }
+
+        .note {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin: 10px 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 MediAI Animation Debug Page</h1>
+    <p style="color: #4a5568; font-size: 1.1rem;">Test your browser's CSS animation support</p>
+
+    <div class="test-section">
+        <h2>✨ Float Animation (4s cycle)</h2>
+        <p class="note">Should smoothly float up and to the sides, repeating infinitely</p>
+        <div class="animation-demo demo-float"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>⚡ Bounce Animation (2s cycle)</h2>
+        <p class="note">Should bounce up and down continuously</p>
+        <div class="animation-demo demo-bounce"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>💫 Pulse Animation (2s cycle)</h2>
+        <p class="note">Should scale and fade continuously</p>
+        <div class="animation-demo demo-pulse"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>⬆️ Slide In Up Animation (1s, one-time)</h2>
+        <p class="note">Should slide in from below with fade</p>
+        <div class="animation-demo demo-slideInUp" style="margin-top: 30px;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>⬇️ Slide In Down Animation (1s, one-time)</h2>
+        <p class="note">Should slide in from above with fade</p>
+        <div class="animation-demo demo-slideInDown" style="margin-top: 30px;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌟 Glow Animation (2s cycle)</h2>
+        <p class="note">Should have an expanding glowing box-shadow</p>
+        <div class="demo-glow"></div>
+    </div>
+
+    <div class="test-section">
+        <h3 style="color: #667eea; margin-top: 40px;">Summary:</h3>
+        <ul style="color: #4a5568;">
+            <li>If ALL animations above are working smoothly, animations are enabled in your browser ✅</li>
+            <li>If NONE are working, check if you have animations disabled in browser settings ❌</li>
+            <li>If SOME are working, there may be CSS specificity issues in the main stylesheet</li>
+        </ul>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to MediAI</a>
+</body>
+</html>

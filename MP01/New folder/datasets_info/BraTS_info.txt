@@ -1,0 +1,13 @@
+﻿# BraTS Dataset Info
+
+Download: https://www.med.upenn.edu/cbica/brats2020/registration.html
+
+## What you get:
+- 3000+ brain MRI scans
+- Tumor segmentation masks (exact location!)
+- Patient age
+- Survival data
+- Tumor grade (HGG/LGG)
+
+## Perfect for:
+Patient data -> Generate scan showing tumor location

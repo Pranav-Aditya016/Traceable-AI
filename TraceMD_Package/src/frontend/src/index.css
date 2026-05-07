@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Light Theme (default) ── */
+:root {
+  --bg-primary: #f0f4f8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --border-color: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --medical-cyan: #0891b2;
+  --medical-blue: #3b82f6;
+  --danger: #ef4444;
+  --success: #16a34a;
+  --warning: #ca8a04;
+  --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c4a6e 100%);
+}
+
+/* ── Dark Theme ── */
+[data-theme="dark"] {
+  --bg-primary: #0f1729;
+  --bg-card: #1a2332;
+  --bg-card-hover: #1e2a3a;
+  --border-color: #2a3a4e;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --medical-cyan: #06b6d4;
+  --medical-blue: #3b82f6;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #eab308;
+  --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c4a6e 100%);
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+code, pre, .font-mono {
+  font-family: 'DM Mono', 'Fira Code', monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* Toggle switch */
+.toggle-switch {
+  position: relative; display: inline-block; width: 44px; height: 24px;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute; cursor: pointer; inset: 0;
+  background: var(--border-color); border-radius: 24px; transition: 0.3s;
+}
+.toggle-slider::before {
+  content: ''; position: absolute; height: 18px; width: 18px;
+  left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s;
+}
+.toggle-switch input:checked + .toggle-slider { background: var(--accent); }
+.toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* Confidence ring */
+.confidence-ring {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+}
+.confidence-ring svg { transform: rotate(-90deg); }
+.confidence-ring .ring-text {
+  position: absolute; font-weight: 700; font-size: 1.25rem; color: var(--text-primary);
+}
+
+/* SHAP bars */
+.shap-bar-positive {
+  background: linear-gradient(90deg, rgba(99,102,241,0.15), rgba(99,102,241,0.7));
+}
+.shap-bar-negative {
+  background: linear-gradient(270deg, rgba(239,68,68,0.15), rgba(239,68,68,0.7));
+}
+
+/* Pipeline progress bar animation */
+@keyframes progress-stripe {
+  0% { background-position: 1rem 0; }
+  100% { background-position: 0 0; }
+}
+.progress-bar-animated {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255,255,255,0.15) 25%, transparent 25%,
+    transparent 50%, rgba(255,255,255,0.15) 50%,
+    rgba(255,255,255,0.15) 75%, transparent 75%, transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-stripe 1s linear infinite;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.3s;
+  color: var(--text-secondary);
+}
+.theme-toggle:hover {
+  background: var(--bg-card-hover);
+  color: var(--accent);
+  border-color: var(--accent);
+}

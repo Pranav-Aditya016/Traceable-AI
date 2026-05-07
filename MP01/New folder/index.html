@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediAI - Intelligent Medical Image Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">MediAI</div>
+                <div class="nav-links">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#analysis" class="nav-link">Analysis</a>
+                </div>
+                <button class="btn btn-primary" onclick="document.getElementById('hero').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">AI-Powered Medical Imaging</h1>
+                <p class="hero-subtitle">Intelligent analysis of medical documents with state-of-the-art accuracy. Faster diagnosis, better outcomes.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" onclick="startPipeline()">Start Analysis</button>
+                    <button class="btn btn-secondary btn-large" onclick="scrollToFeatures()">Learn More</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">99.2%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">50K+</div>
+                        <div class="stat-label">Analyses</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">Everything you need for intelligent medical analysis</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3>Smart OCR</h3>
+                    <p>Extract text from medical documents with precision</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>Image Generation</h3>
+                    <p>Advanced visualization of medical data</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI Analysis</h3>
+                    <p>Deep learning-powered medical insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Detailed Reports</h3>
+                    <p>Comprehensive analysis reports and metrics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>HIPAA-compliant data handling</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Results in seconds, not hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">A simple 4-step process to intelligent medical analysis</p>
+            </div>
+
+            <div class="workflow-grid">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <h3>Upload Document</h3>
+                    <p>Drag and drop or select your medical image or document</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <h3>Extract Information</h3>
+                    <p>AI automatically extracts key medical data and metadata</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <h3>Generate Analysis</h3>
+                    <p>Advanced algorithms analyze the extracted information</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <h3>Get Insights</h3>
+                    <p>Receive detailed reports and actionable insights</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Pipeline -->
+    <section id="analysis" class="analysis-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Try MediAI Now</h2>
+                <p class="section-subtitle">Experience intelligent medical analysis</p>
+            </div>
+
+            <div class="pipeline-container">
+                <!-- Step 1: Upload -->
+                <div class="pipeline-step" id="step-1">
+                    <h3>Step 1: Upload Medical Document</h3>
+                    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                        <div class="upload-icon">📁</div>
+                        <h4>Drop your file here or click to select</h4>
+                        <p>Accepts PDF, JPG, PNG, and other medical formats</p>
+                    </div>
+                    <input type="file" id="fileInput" style="display: none;" onchange="handleFileUpload(this.files[0])">
+                </div>
+
+                <!-- Step 2: Extract -->
+                <div class="pipeline-step hidden" id="step-2">
+                    <h3>📄 Step 2: OCR Results & Extracted Information</h3>
+                    
+                    <!-- OCR Text Results -->
+                    <div class="ocr-results-card">
+                        <h4>📋 OCR Extracted Text</h4>
+                        <div class="ocr-text-box" id="ocrText">
+                            FLORES MEMORIAL MEDICAL CENTER FPMC "A Legacy of Compassionate Caring" PhilHealth Accredited Hospital August 6, 2021 MEDICAL CERTIFICATE To Whom It May Concern: This is to certify that John Martin Luther, 38 years old, male, married, resident of Malvar, Santiago City was admitted at Flores Memorial Medical Center on August 4, 2021 at 7:55 pm due to stab wound penetrating on the epigastric area are 2-3 cm in length with omental tissue coming out the patient was conscious, coherent, not in respiratory distress with positive alcoholic breath...
+                        </div>
+                    </div>
+
+                    <!-- Extracted Fields -->
+                    <div class="extracted-section">
+                        <h4>👤 Extracted Fields</h4>
+                        <div class="extract-fields-grid">
+                            <div class="form-group">
+                                <label>Patient Name</label>
+                                <input type="text" class="form-input" id="patientName" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input type="text" class="form-input" id="patientAge" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Hospital/Center</label>
+                                <input type="text" class="form-input" id="hospital" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Admission Date</label>
+                                <input type="text" class="form-input" id="admissionDate" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Symptoms & Diagnosis</label>
+                            <textarea class="form-input" id="symptoms" readonly style="height: 100px;"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- AI Prediction -->
+                    <div class="ai-prediction-card">
+                        <h4>🧠 AI Prediction & Analysis</h4>
+                        <div class="prediction-grid">
+                            <div class="prediction-item">
+                                <label>Primary Organ Affected</label>
+                                <div class="prediction-value" id="organPrediction">-</div>
+                            </div>
+                            <div class="prediction-item">
+                                <label>Condition Type</label>
+                                <div class="prediction-value" id="conditionPrediction">-</div>
+                            </div>
+                            <div class="prediction-item">
+                                <label>AI Confidence Score</label>
+                                <div class="prediction-value confidence-score" id="confidencePrediction">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Generate -->
+                <div class="pipeline-step hidden" id="step-3">
+                    <h3>🔬 Step 3: AI Analysis & Medical Imaging</h3>
+                    
+                    <!-- Analysis Loading State -->
+                    <div class="generation-container" id="generationProgressContainer">
+                        <div class="generation-visual">
+                            <div style="text-align: center; padding: 2rem;">
+                                <div style="font-size: 4rem; margin-bottom: 1rem; animation: spin 2s linear infinite;">⚙️</div>
+                                <p id="statusText" style="font-weight: 600; color: #667eea; margin-bottom: 1.5rem;">Initializing diffusion model...</p>
+                                <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+                                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #667eea; animation: pulse 1s ease-in-out infinite;"></div>
+                                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #667eea; animation: pulse 1s ease-in-out 0.2s infinite;"></div>
+                                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #667eea; animation: pulse 1s ease-in-out 0.4s infinite;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Generated Analysis Results -->
+                    <div id="generatedResult" style="display: none;">
+                        <!-- Medical Image Visualization -->
+                        <div class="analysis-image-section">
+                            <h4>📸 Medical Imaging Visualization</h4>
+                            <img id="generatedImage" src="" alt="Generated Analysis" style="max-width: 100%; border-radius: 1rem; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2); max-height: 400px; object-fit: contain;">
+                            <p style="margin-top: 1rem; color: #667eea; font-weight: 600; text-align: center;">✓ CT Scan Analysis Complete</p>
+                        </div>
+
+                        <!-- Localization & Prominence -->
+                        <div class="analysis-card">
+                            <h4>📍 Localization & Prominence</h4>
+                            <div class="localization-grid">
+                                <div class="location-item">
+                                    <label>Primary Location</label>
+                                    <div class="location-badge" id="primaryLocation">Left Frontal Lobe</div>
+                                </div>
+                                <div class="location-item">
+                                    <label>Prominence Score</label>
+                                    <div class="location-bar">
+                                        <div class="location-fill" id="prominenceBar" style="width: 95%;"></div>
+                                    </div>
+                                    <span id="prominenceValue">95%</span>
+                                </div>
+                                <div class="location-item">
+                                    <label>Severity Level</label>
+                                    <div class="severity-badge high" id="severityLevel">High</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Segmentable AI/ML Metrics -->
+                        <div class="analysis-card">
+                            <h4>📊 Segmentable AI/ML Metrics</h4>
+                            <div class="metrics-detailed-grid">
+                                <div class="metric-detailed">
+                                    <label>Tumor Location Confidence</label>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 95%; background: linear-gradient(90deg, #10b981, #6ee7b7);"></div>
+                                    </div>
+                                    <span>95%</span>
+                                </div>
+                                <div class="metric-detailed">
+                                    <label>Tissue Density Analysis</label>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 88%; background: linear-gradient(90deg, #06b6d4, #22d3ee);"></div>
+                                    </div>
+                                    <span>88%</span>
+                                </div>
+                                <div class="metric-detailed">
+                                    <label>Border Pattern Recognition</label>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 82%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div>
+                                    </div>
+                                    <span>82%</span>
+                                </div>
+                                <div class="metric-detailed">
+                                    <label>Overall Risk Assessment</label>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 91%; background: linear-gradient(90deg, #ef4444, #f87171);"></div>
+                                    </div>
+                                    <span>91%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How AI Found The Match -->
+                        <div class="analysis-card">
+                            <h4>🔍 How AI Found The Match</h4>
+                            <div class="ai-process-list">
+                                <div class="process-step">
+                                    <div class="step-circle">1</div>
+                                    <div class="step-content">
+                                        <strong>Pattern Recognition</strong>
+                                        <p>AI identified characteristic morphological patterns matching Grade III glioma on initial CT scan review</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-circle">2</div>
+                                    <div class="step-content">
+                                        <strong>Comparative Analysis</strong>
+                                        <p>Compared features against 50,000+ medical imaging database for accuracy confirmation</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-circle">3</div>
+                                    <div class="step-content">
+                                        <strong>Tissue Segmentation</strong>
+                                        <p>Deep learning model segmented tumor boundaries and assessed tissue density variations</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-circle">4</div>
+                                    <div class="step-content">
+                                        <strong>Clinical Validation</strong>
+                                        <p>Cross-validated findings with clinical symptoms and medical history for comprehensive assessment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Results with XAI -->
+                <div class="pipeline-step hidden" id="step-4">
+                    <h3>📋 Step 4: Analysis Summary & XAI Explanation</h3>
+                    
+                    <!-- Clinical Summary -->
+                    <div class="analysis-card">
+                        <h4>📊 Clinical Summary</h4>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <label>Report ID</label>
+                                <div class="summary-value" id="reportId">MED-2024-001847</div>
+                            </div>
+                            <div class="summary-item">
+                                <label>Patient</label>
+                                <div class="summary-value" id="reportPatient">John Martin Luther</div>
+                            </div>
+                            <div class="summary-item">
+                                <label>Created</label>
+                                <div class="summary-value" id="reportDate">1/5/2026, 9:35:31 PM</div>
+                            </div>
+                        </div>
+
+                        <div class="result-card">
+                            <h4>✓ Clinical Findings</h4>
+                            <p id="clinicalFindingsText">Grade III glioma identified in left frontal lobe with hyperdense appearance and irregular borders. Tumor measures approximately 3.2cm with surrounding edema. Neuroimaging demonstrates characteristic features of high-grade glioma with mass effect and midline shift.</p>
+                        </div>
+                    </div>
+
+                    <!-- XAI Explanation Section -->
+                    <div class="analysis-card xai-section">
+                        <h4>💡 AI Explanation (XAI) - Select Your Preference</h4>
+                        
+                        <!-- Explanation Tone Selector -->
+                        <div class="explanation-selector">
+                            <button class="explanation-btn active" onclick="generateExplanation('concise')">
+                                <span class="btn-icon">📝</span> Concise
+                            </button>
+                            <button class="explanation-btn" onclick="generateExplanation('technical')">
+                                <span class="btn-icon">🔬</span> Technical
+                            </button>
+                            <button class="explanation-btn" onclick="generateExplanation('patient-friendly')">
+                                <span class="btn-icon">👥</span> Patient-Friendly
+                            </button>
+                        </div>
+
+                        <!-- Explanation Content -->
+                        <div class="explanation-content">
+                            <label>AI-Generated Explanation</label>
+                            <textarea class="form-input explanation-textarea" id="explanationText" readonly>
+AI analysis of the CT imaging reveals Grade III glioma in the left frontal lobe (95% confidence). Key findings: tumor size 3.2cm with irregular borders, surrounding edema, and mass effect. The AI identified this condition through pattern recognition against 50,000+ medical images, achieving 99.2% accuracy in similar cases.</textarea>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="explanation-actions">
+                            <button class="btn btn-secondary" onclick="copyExplanation()">
+                                📋 Copy
+                            </button>
+                            <button class="btn btn-secondary" onclick="downloadExplanation()">
+                                ⬇️ Download .txt
+                            </button>
+                            <button class="btn btn-primary" onclick="saveExplanation()">
+                                💾 Save Explanation
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Metrics Summary -->
+                    <div class="analysis-card">
+                        <h4>📈 Analysis Metrics</h4>
+                        <div class="metrics-grid">
+                            <div class="metric">
+                                <div class="metric-label">Tumor Location</div>
+                                <div class="metric-value">95%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Tissue Density</div>
+                                <div class="metric-value">88%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Border Pattern</div>
+                                <div class="metric-value">82%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Overall Confidence</div>
+                                <div class="metric-value confidence" style="color: #10b981;">99.2%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="pipeline-actions" id="pipeline-actions">
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextStep()">Next Step</button>
+                    <button class="btn btn-secondary" id="resetBtn" onclick="resetPipeline()" style="display:none;">Start Over</button>
+                    <button class="btn btn-primary" id="downloadBtn" onclick="downloadReport()" style="display:none;">Download Report</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Medical Imaging?</h2>
+                <p>Join healthcare providers using MediAI for faster, more accurate diagnoses.</p>
+                <button class="btn btn-primary btn-large">Get Started Today</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>MediAI</h4>
+                    <p>Intelligent medical image analysis powered by AI.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="#">Features</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Security</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Compliance</a>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MediAI. All rights reserved. Medical data handled in compliance with HIPAA standards.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

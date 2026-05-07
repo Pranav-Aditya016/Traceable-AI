@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animation Test</title>
+    <style>
+        body {
+            margin: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        .test-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 20px 0;
+            border-radius: 10px;
+            will-change: transform;
+        }
+
+        .float-test {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .bounce-test {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .pulse-test {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .fadeInOut-test {
+            animation: fadeInOut 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Animation Test</h1>
+    <p>All boxes below should animate. If they don't, there's an issue with animations in your browser.</p>
+
+    <h2>Float Animation:</h2>
+    <div class="test-box float-test"></div>
+
+    <h2>Bounce Animation:</h2>
+    <div class="test-box bounce-test"></div>
+
+    <h2>Pulse Animation:</h2>
+    <div class="test-box pulse-test"></div>
+
+    <h2>FadeInOut Animation:</h2>
+    <div class="test-box fadeInOut-test"></div>
+
+    <p><a href="index.html">Back to MediAI</a></p>
+</body>
+</html>
